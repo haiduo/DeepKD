@@ -97,17 +97,36 @@ python tools/train.py --cfg configs/imagenet/r34_r18/deepkd_crld.yaml
 ```
 
 
-### Training on MS-COCO
-  ```bash
-  # KD+Ours
-  python tools/train.py --cfg configs/coco/r34_r18/deepkd_kd.yaml
-  # DKD+Ours
-  python tools/train.py --cfg configs/coco/r34_r18/deepkd_dkd.yaml
-  # MLKD+Ours
-  python tools/train.py --cfg configs/coco/r34_r18/deepkd_mlkd.yaml
-  # CRKD+Ours
-  python tools/train.py --cfg configs/coco/r34_r18/deepkd_crld.yaml 
-  ```
+## Object Detection on MS-COCO
+Our implementation is built upon the [ReviewKD codebase](https://github.com/dvlab-research/ReviewKD).
+
+## Installation
+
+1. Install Detectron2:
+   - Follow the official installation guide at https://github.com/facebookresearch/detectron2
+
+2. Dataset Setup:
+   - Download the [COCO dataset](https://cocodataset.org/#download)
+   - Place the dataset in the `datasets/` directory
+
+3. Pretrained Models:
+   - Download pretrained weights from [ReviewKD releases](https://github.com/dvlab-research/ReviewKD/releases/)
+   - Place the weights in the `pretrained/` directory
+   - Note: The provided weights include both teacher models (from Detectron2's pretrained detectors) and student models (ImageNet pretrained weights)
+
+## Training Commands
+Train different model configurations using the following commands:
+```
+# Tea: R-101, Stu: R-18
+python train_net.py --config-file configs/DEEPKD/DKD-R18-R101.yaml --num-gpus 4
+
+# Tea: R-101, Stu: R-50
+python train_net.py --config-file configs/DEEPKD/DKD-R50-R101.yaml --num-gpus 4
+
+# Tea: R-50, Stu: MV2
+python train_net.py --config-file configs/DEEPKD/DKD-MV2-R50.yaml --num-gpus 4
+
+```
 
 ## Acknowledgement
 
