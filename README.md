@@ -116,7 +116,8 @@ Our implementation is built upon the [ReviewKD codebase](https://github.com/dvla
 
 ## Training Commands
 Train different model configurations using the following commands:
-```
+
+```bash
 # Tea: R-101, Stu: R-18
 python train_net.py --config-file configs/DEEPKD/DKD-R18-R101.yaml --num-gpus 4
 
@@ -125,7 +126,6 @@ python train_net.py --config-file configs/DEEPKD/DKD-R50-R101.yaml --num-gpus 4
 
 # Tea: R-50, Stu: MV2
 python train_net.py --config-file configs/DEEPKD/DKD-MV2-R50.yaml --num-gpus 4
-
 ```
 
 ## Acknowledgement
