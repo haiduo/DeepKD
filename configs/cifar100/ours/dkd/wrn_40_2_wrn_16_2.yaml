@@ -1,0 +1,23 @@
+EXPERIMENT:
+  NAME: ""
+  TAG: "dkd,wrn_40_2,wrn_16_2"
+  PROJECT: "cifar100_ours"
+DISTILLER:
+  TYPE: "DKD"
+  TEACHER: "wrn_40_2"
+  STUDENT: "wrn_16_2"
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 480
+  LR: 0.04
+  LR_DECAY_STAGES: [180, 300, 420]
+  LR_DECAY_RATE: 0.1
+  WEIGHT_DECAY: 0.0005
+  MOMENTUM: 0.9
+  TYPE: "SGD"
+  TRAINER: "deepkd"
+  DEEPKD:
+    DKD: True
+    DELTA_TOG: 0.075
+    DELTA_TCG: -0.1
+    DELTA_NCG: 0.05

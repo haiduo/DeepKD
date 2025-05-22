@@ -1,0 +1,29 @@
+EXPERIMENT:
+  NAME: ""
+  TAG: "crld,wrn_40_2,res8x4"
+  PROJECT: "cifar100_ours"
+DISTILLER:
+  TYPE: "CRLD"
+  TEACHER: "wrn_40_2"
+  STUDENT: "resnet8x4"
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 240
+  LR: 0.05
+  LR_DECAY_STAGES: [150, 180, 210]
+  LR_DECAY_RATE: 0.1
+  WEIGHT_DECAY: 0.0005
+  MOMENTUM: 0.9
+  TYPE: "SGD"
+  LR_COS: True
+  TRAINER: "deepkd"
+  DEEPKD:
+    DKD: True
+    BETA: 0.5
+    DELTA_TOG: 0.075
+    DELTA_TCG: -0.075
+    DELTA_NCG: 0.05
+CRLD:
+  CE_WEIGHT: 1.0
+  WV_WEIGHT: 1.0
+  CV_WEIGHT: 0.5

@@ -1,0 +1,36 @@
+EXPERIMENT:
+  NAME: ""
+  TAG: "kd_ours,res50,mobilenetv2"
+  PROJECT: "imagenet_baselines"
+DATASET:
+  TYPE: "imagenet"
+  NUM_WORKERS: 32
+  TEST:
+    BATCH_SIZE: 128
+DISTILLER:
+  TYPE: "KD_ours"
+  TEACHER: "ResNet50"
+  STUDENT: "MobileNetV2"
+SOLVER:
+  BATCH_SIZE: 512
+  EPOCHS: 100
+  LR: 0.2
+  LR_DECAY_STAGES: [30, 60, 90]
+  LR_DECAY_RATE: 0.1
+  WEIGHT_DECAY: 0.0001
+  MOMENTUM: 0.9
+  TYPE: "SGD"
+  LR_COS: True
+  TRAINER: "deepkd"
+  DEEPKD:
+    DKD: True
+    BETA: 0.5
+    DELTA_TOG: 0.075
+    DELTA_TCG: -0.075
+    DELTA_NCG: 0.05
+KD:
+  TEMPERATURE: 1
+  LOSS:
+    CE_WEIGHT: 0.5
+    KD_WEIGHT: 0.5
+
